@@ -1,1 +1,129 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .fundo{
+            background: linear-gradient(90deg, rgba(245,40,109,1) 0%, rgba(251,67,77,1) 80%);
+            height: 100vh;
+            color: #fff;
+            font-family: 'Roboto Mono',monospace;
+            text-align: center;
+            padding: 15px;
+        }
+        .titulos{
+            font-size: 20px;
+            color: white;
+        }
+        .calculadora{
+            background-color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            padding: 15px;
+        }
+        #resultado{
+            color: white;
+            background: black;
+            padding: 10px;
+            padding-right: 15px;
+            padding-left: 15px;
+            border-radius: 15px;
+            text-align: right;
+            margin: 10px;
+            font-family: 'Roboto Mono',monospace;
+            font-size: 20px;
+            height: 30px;
+        }
+        .botao{
+            background-color: black;
+            color: white;
+            border-radius: 5px;
+            height: 50px;
+            width: 100px;
+            border-color: #FE2E8D;
+            font-size: 20px;
+            font-family: 'Roboto Mono',monospace;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .botao:hover{
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="fundo">
+    <h2 class="titulos">Matheus Souza Marques</h2>
+    <div class="calculadora">
+        <h1 style="color: black;">Calculadora</h1>
+        <p id="resultado"></p>
+        <table>
+            <tr>
+                    <th><button class="botao" onclick="clean()">AC</button></th>
+                    <th><button class="botao" onclick="back()"><</button></th>
+                    <th><button class="botao" onclick="insert('/')">/</button></th>
+            </tr>
+            <tr>
+                    <th><button class="botao" onclick="insert('+')">+</button></th>
+                    <th><button class="botao" onclick="insert('-')">-</button></th>
+                    <th><button class="botao" onclick="insert('*')">x</button></th>
+            </tr>
+            <tr>
+                    <th><button class="botao" onclick="insert('1')">1</button></th>
+                    <th><button class="botao" onclick="insert('2')">2</button></th>
+                    <th><button class="botao" onclick="insert('3')">3</button></th>
+            </tr>
+            
+            <tr>
+                    <th><button class='botao' onclick="insert('4')">4</button></th>
+                    <th><button class='botao' onclick="insert('5')">5</button></th>
+                    <th><button class="botao" onclick="insert('6')">6</button></th>
+            </tr>
+            <tr>
+                    <th><button class="botao" onclick="insert('7')">7</button></th>
+                    <th><button class="botao" onclick="insert('8')">8</button></th>
+                    <th><button class="botao" onclick="insert('9')">9</button></th>
+            </tr>
+            <tr>
+                    <th colspan="2" ><button class="botao" style="width: 220px;" onclick="insert('0')">0</button></th>
+                    <th><button class="botao" onclick="calcular()">=</button></th>
+            </tr> 
+        </table>
+    </div>
+</div>
+<script>
+    function insert(num)
+        {
+            var numero = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero + num;
+        }
+        function clean()
+        {
+            document.getElementById('resultado').innerHTML = "";
+        }
+        function back()
+        {
+            var resultado = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
+        }
+        function calcular()
+        {
+            var resultado = document.getElementById('resultado').innerHTML;
+            if(resultado)
+            {
+                document.getElementById('resultado').innerHTML = eval(resultado);
+            }
+        }
+</script>
+</body>
+</html>
